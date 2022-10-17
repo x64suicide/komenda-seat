@@ -12,6 +12,6 @@ RegisterCommand('seat', function(src, args, raw)
         SetPedIntoVehicle(PlayerPedId(), GetVehiclePedIsIn(PlayerPedId()), args[1])
         ESX.ShowNotification('~g~Zmieniono siedzenie')
     else
-        ESX.ShowNotification('~r~Nie jesteś w pojeździe')
+        ESX.ShowNotification('~r~Nie jesteś w pojeździe lub miejsce jest zajęte')
     end
 end)
