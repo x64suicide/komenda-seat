@@ -8,10 +8,12 @@ Citizen.CreateThread(function()
 end)
 
 RegisterCommand('seat', function(src, args, raw)
-    if IsPedInAnyVehicle(PlayerPedId()) then
-        SetPedIntoVehicle(PlayerPedId(), GetVehiclePedIsIn(PlayerPedId()), tonumber(args[1]))
+    local ped = PlayerPedId()
+    local vehicle = GetVehiclePedIsIn(ped)
+    if IsPedInAnyVehicle(ped) and IsVehicleSeatFree(vehicle, args[1]) then
+        SetPedIntoVehicle(ped, vehicle, args[1])
         ESX.ShowNotification('~g~Zmieniono siedzenie')
     else
-        ESX.ShowNotification('~r~Nie jesteś w pojeździe')
+        ESX.ShowNotification('~r~Nie jesteś w pojeździe lub miejsce jest zajęte')
     end
 end)
